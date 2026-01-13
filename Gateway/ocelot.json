@@ -1,0 +1,62 @@
+
+{
+  "Routes": [
+    {
+      "UpstreamPathTemplate": "/api/floorplans",
+      "DownstreamPathTemplate": "/api/floorplans",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [{ "Host": "localhost", "Port": 5162 }]
+    },
+    {
+      "UpstreamPathTemplate": "/api/floorplans/{everything}",
+      "DownstreamPathTemplate": "/api/floorplans/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [{ "Host": "localhost", "Port": 5162 }]
+    },
+
+
+    {
+      "UpstreamPathTemplate": "/api/poi",
+      "DownstreamPathTemplate": "/api/poi",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [{ "Host": "localhost", "Port": 5082 }]
+    },
+    {
+      "UpstreamPathTemplate": "/api/poi/{everything}",
+      "DownstreamPathTemplate": "/api/poi/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [{ "Host": "localhost", "Port": 5082 }]
+    },
+
+
+    {
+      "UpstreamPathTemplate": "/api/poisensor",
+      "DownstreamPathTemplate": "/api/poisensor",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [{ "Host": "localhost", "Port": 5011 }]
+    },
+    {
+      "UpstreamPathTemplate": "/api/poisensor/{everything}",
+      "DownstreamPathTemplate": "/api/poisensor/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [{ "Host": "localhost", "Port": 5011 }]
+    },
+
+
+    {
+      "UpstreamPathTemplate": "/api/sensordata",
+      "DownstreamPathTemplate": "/api/sensordata",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [{ "Host": "localhost", "Port": 5097 }]
+    },
+    {
+      "UpstreamPathTemplate": "/api/sensordata/{everything}",
+      "DownstreamPathTemplate": "/api/sensordata/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [{ "Host": "localhost", "Port": 5097 }]
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:5273"
+  }
+}
