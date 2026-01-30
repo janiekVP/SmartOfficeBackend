@@ -129,3 +129,4 @@ C:\Users\japelt\RiderProjects\SmartOffice\POISensor\obj\Debug\net9.0\refint\POIS
 C:\Users\japelt\RiderProjects\SmartOffice\POISensor\obj\Debug\net9.0\POISensor.pdb
 C:\Users\japelt\RiderProjects\SmartOffice\POISensor\obj\Debug\net9.0\POISensor.genruntimeconfig.cache
 C:\Users\japelt\RiderProjects\SmartOffice\POISensor\obj\Debug\net9.0\ref\POISensor.dll
+C:\Users\japelt\RiderProjects\SmartOffice\POISensor\obj\Debug\net9.0\POISensor.sourcelink.json

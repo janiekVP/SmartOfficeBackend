@@ -129,3 +129,4 @@ C:\Users\japelt\RiderProjects\SmartOffice\SensorData\obj\Debug\net9.0\refint\Sen
 C:\Users\japelt\RiderProjects\SmartOffice\SensorData\obj\Debug\net9.0\SensorData.pdb
 C:\Users\japelt\RiderProjects\SmartOffice\SensorData\obj\Debug\net9.0\SensorData.genruntimeconfig.cache
 C:\Users\japelt\RiderProjects\SmartOffice\SensorData\obj\Debug\net9.0\ref\SensorData.dll
+C:\Users\japelt\RiderProjects\SmartOffice\SensorData\obj\Debug\net9.0\SensorData.sourcelink.json

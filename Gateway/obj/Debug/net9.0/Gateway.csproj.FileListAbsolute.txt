@@ -41,3 +41,4 @@ C:\Users\japelt\RiderProjects\SmartOffice\Gateway\obj\Debug\net9.0\refint\Gatewa
 C:\Users\japelt\RiderProjects\SmartOffice\Gateway\obj\Debug\net9.0\Gateway.pdb
 C:\Users\japelt\RiderProjects\SmartOffice\Gateway\obj\Debug\net9.0\Gateway.genruntimeconfig.cache
 C:\Users\japelt\RiderProjects\SmartOffice\Gateway\obj\Debug\net9.0\ref\Gateway.dll
+C:\Users\japelt\RiderProjects\SmartOffice\Gateway\obj\Debug\net9.0\Gateway.sourcelink.json

@@ -46,6 +46,24 @@ namespace POI.Controllers
             var dtoList = _mapper.Map<List<POIReadDto>>(items);
             return Ok(dtoList);
         }
+        
+        
+        // READ ALL BY FLOORPLAN ID
+        [HttpGet("floorplan/{floorplanId}")]
+        public async Task<ActionResult<IEnumerable<POIReadDto>>> GetAllByFloorplanId(
+            int floorplanId,
+            CancellationToken ct)
+        {
+            var items = await _db.POIs
+                .AsNoTracking()
+                .Where(p => p.FloorplanId == floorplanId)
+                .ToListAsync(ct);
+
+            var dtoList = _mapper.Map<List<POIReadDto>>(items);
+
+            return Ok(dtoList);
+        }
+
 
         // READ BY ID
         [HttpGet("{id:int}")]

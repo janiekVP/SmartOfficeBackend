@@ -44,6 +44,22 @@ namespace POISensor.Controllers
             var items = await _db.POISensors.AsNoTracking().ToListAsync(ct);
             return Ok(_mapper.Map<List<POISensorReadDto>>(items));
         }
+        
+        // READ ALL BY POI ID
+        [HttpGet("poi/{poiId}")]
+        public async Task<ActionResult<IEnumerable<POISensorReadDto>>> GetAllByPOIId(
+            int poiId,
+            CancellationToken ct)
+        {
+            var items = await _db.POISensors
+                .AsNoTracking()
+                .Where(s => s.POIId == poiId)
+                .ToListAsync(ct);
+
+            var dtoList = _mapper.Map<List<POISensorReadDto>>(items);
+
+            return Ok(dtoList);
+        }
 
         // READ BY ID
         [HttpGet("{id:int}")]

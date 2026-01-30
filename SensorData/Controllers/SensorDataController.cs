@@ -46,6 +46,23 @@ namespace SensorData.Controllers
             var dtoList = _mapper.Map<List<SensorDataReadDto>>(items);
             return Ok(dtoList);
         }
+        
+        // READ ALL BY POI SENSOR ID
+        [HttpGet("poisensor/{poiSensorId}")]
+        public async Task<ActionResult<IEnumerable<SensorDataReadDto>>> GetAllByPOISensorId(
+            int poiSensorId,
+            CancellationToken ct)
+        {
+            var items = await _db.SensorData
+                .AsNoTracking()
+                .Where(d => d.POISensorId == poiSensorId)
+                .ToListAsync(ct);
+
+            var dtoList = _mapper.Map<List<SensorDataReadDto>>(items);
+
+            return Ok(dtoList);
+        }
+
 
         // READ BY ID
         [HttpGet("{id:int}")]
