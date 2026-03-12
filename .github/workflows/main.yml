@@ -11,33 +11,32 @@ permissions:
 
 jobs:
   snyk:
+    runs-on: ubuntu-latest
+
     permissions:
       contents: read
       security-events: write
       actions: read
-    runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
 
-      # 1) Install .NET SDK so we can restore and build
-      - name: Setup .NET SDK
-        uses: actions/setup-dotnet@v3
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '9.0.x'
 
-      # 2) Restore all projects in the solution (generates project.assets.json)
-      - name: Restore .NET solution
-        run: dotnet restore SmartOffice.sln --verbosity detailed
+      - name: Restore
+        run: dotnet restore SmartOffice.sln
 
-      # 3) Build solution (optional but recommended)
-      - name: Build .NET solution
+      - name: Build
         run: dotnet build SmartOffice.sln --no-restore
 
-      # 4) Debug: list project files to confirm paths
-      - name: List project files
-        run: |
-          ls -R Floorplan
-          ls -R POI
-          ls -R Gateway
-          ls -R POISensor
-          ls -R Sensordata
+      - name: Install Snyk
+        run: npm install -g snyk
+
+      - name: Authenticate Snyk
+        run: snyk auth ${{ secrets.SNYK_TOKEN }}
+
+      - name: Run Snyk test
+        run: snyk test --all-projects
