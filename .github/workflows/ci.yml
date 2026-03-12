@@ -1,0 +1,73 @@
+name: SmartOffice CI
+
+on:
+  push:
+    branches: ["master"]
+  pull_request:
+    branches: ["master"]
+
+permissions:
+  contents: read
+  security-events: write
+
+jobs:
+
+  build-test-scan:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    # Install .NET
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 9.0.x
+
+    # Cache NuGet packages (makes builds much faster)
+    - name: Cache NuGet packages
+      uses: actions/cache@v4
+      with:
+        path: ~/.nuget/packages
+        key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }}
+        restore-keys: |
+          ${{ runner.os }}-nuget-
+
+    # Restore dependencies
+    - name: Restore solution
+      run: dotnet restore SmartOffice.sln
+
+    # Build
+    - name: Build solution
+      run: dotnet build SmartOffice.sln --no-restore --configuration Release
+
+    # Run tests
+    - name: Run tests
+      run: dotnet test SmartOffice.sln --no-build --verbosity normal
+
+    # Install Snyk CLI
+    - name: Install Snyk
+      run: npm install -g snyk
+
+    # Authenticate Snyk
+    - name: Authenticate Snyk
+      run: snyk auth ${{ secrets.SNYK_TOKEN }}
+
+    # Dependency vulnerability scan
+    - name: Snyk dependency scan
+      run: snyk test --all-projects
+
+    # Code security scan (SAST)
+    - name: Snyk code scan
+      run: snyk code test
+
+    # Upload build artifacts
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: build-output
+        path: |
+          **/bin/Release
